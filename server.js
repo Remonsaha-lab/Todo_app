@@ -15,11 +15,19 @@ function logger(req, res, next) {
     next();
 }
 
+// --- HTML Page Routes ---
+
+// This route serves your main landing page (page.html)
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "page.html"));
+});
+
+// This route serves the login page
 app.get("/login", (req, res) => {
     res.sendFile(path.join(__dirname, "login.html"));
 });
 
-
+// This route serves the main todo app page
 app.get("/todos-page", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });
@@ -120,6 +128,7 @@ const PORT = process.env.PORT || 3004;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
 
 
 
