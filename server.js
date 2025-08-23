@@ -15,6 +15,14 @@ function logger(req, res, next) {
     next();
 }
 
+app.get("/login", (req, res) => {
+    res.sendFile(path.join(__dirname, "login.html"));
+});
+
+
+app.get("/todos-page", (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"));
+});
 app.post("/signup", logger, (req, res) => {
     const { username, password } = req.body;
     if (!username || !password) {
@@ -27,11 +35,6 @@ app.post("/signup", logger, (req, res) => {
     users.push({ username, password });
     const token = jwt.sign({ username }, JWT_SECRET);
     res.json({ message: "Hey you are signed up", token });
-});
-
-app.get("/", (req, res) => {
-   
-    res.sendFile(__dirname + "/page.html");
 });
 
 app.post("/signin", logger, (req, res) => {
@@ -117,5 +120,6 @@ const PORT = process.env.PORT || 3004;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
 
 
