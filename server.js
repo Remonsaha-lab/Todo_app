@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require("express");
 const JWT_SECRET = process.env.JWT_SECRET || "randomremonlike";
 const jwt = require("jsonwebtoken");
@@ -128,6 +129,7 @@ const PORT = process.env.PORT || 3004;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
 
 
 
