@@ -31,7 +31,7 @@ app.post("/signup", logger, (req, res) => {
 
 app.get("/", (req, res) => {
    
-    res.sendFile(__dirname + "/login.html");
+    res.sendFile(__dirname + "/page.html");
 });
 
 app.post("/signin", logger, (req, res) => {
@@ -117,3 +117,4 @@ const PORT = process.env.PORT || 3004;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
