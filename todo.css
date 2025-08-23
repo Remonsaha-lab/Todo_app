@@ -1,0 +1,187 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+.container{
+   width: 100%;
+   height: 100vh;
+   display:flex;
+   align-items: center;
+    justify-content: center;
+    padding:20px;
+    background: radial-gradient(circle at center, #0099b3, #00333b);
+}
+.box{
+    max-width: 560px; 
+    width:100%;
+}
+.todo-app{
+    background: linear-gradient(135deg, #ffffffcc, #d7e4ec);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    width: 100%;
+    padding: 26px 28px 24px;
+    margin-top: 40px;
+    border-radius: 16px;
+    width: 100%;
+    min-height: 70vh;
+    box-shadow: 0 8px 28px -6px rgba(0,0,0,0.25);
+    position: relative;
+}
+.title{
+    font-size:medium;
+    font-weight:600;
+    font-family: 'Roboto Mono', monospace;
+    display:flex;
+    gap:12px;
+    align-items:center;
+    margin-bottom:14px;
+}
+.title h1{ font-size:28px; letter-spacing:.5px; }
+.title .logo{ width:46px; height:46px; object-fit:contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,.25)); }
+.todo-input{
+    height: auto;
+    display: flex;
+    width: 100%;
+    padding-top: 4px;
+}
+
+button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 0;
+    background-color: #ffffff;
+    box-shadow: rgba(0,0,0,0.08) 0 2px 6px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    font-size: 13px;
+    line-height: 1;
+    transition: background-color .3s ease, box-shadow .3s ease, transform .15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover {
+    background-color: hsl(261deg 80% 48%);
+    color: #fff;
+    box-shadow: rgba(93,24,220,.55) 0 4px 14px;
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: rgba(93,24,220,.3) 0 2px 8px;
+}
+
+
+.todo-input {
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding-top:10px;
+}
+
+
+#input_box {
+    flex:1;
+    height:40px;
+    padding:0 12px;
+    border:1px solid #c7d1d9;
+    border-radius:10px;
+    background:#fdfdfd;
+    font-size:15px;
+    font-family:inherit;
+    outline:none;
+    transition:border-color .2s, box-shadow .2s, background .3s;
+}
+
+#input_box:focus {
+    border-color:#673ab7;
+    box-shadow:0 0 0 3px rgba(103,58,183,0.25);
+    background:#fff;
+}
+
+#input_box::placeholder {
+    color:#8aa0b3;
+    font-size:13px;
+}
+
+
+button {
+    height:40px;
+    padding:0 18px;
+    font-size:12px;
+    letter-spacing:.6px;
+}
+
+.logout-button {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    z-index: 50;
+    background-color: #e53e3e;
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 22px;
+    cursor: pointer;
+    font-size: 12px;
+    letter-spacing: .5px;
+    box-shadow: 0 4px 10px -2px rgba(0,0,0,.35);
+    transition: background-color .25s, transform .25s, box-shadow .25s;
+}
+
+.logout-button:hover { background-color: #c53030; transform: translateY(-2px); }
+.logout-button:active { transform: translateY(0); box-shadow: 0 2px 6px -1px rgba(0,0,0,.45); }
+
+
+#Todo-List {
+    list-style:none;
+    margin:20px 0 0;
+    padding:0;
+    max-height: calc(70vh - 140px);
+    overflow-y:auto;
+    
+}
+#Todo-List::-webkit-scrollbar { width:8px; }
+#Todo-List::-webkit-scrollbar-track { background:transparent; }
+#Todo-List::-webkit-scrollbar-thumb { background:#b4c2cc; border-radius:4px; }
+
+#Todo-List li {
+    background:#ffffff;
+    border:1px solid #dde5eb;
+    border-radius:10px;
+    padding:12px 14px;
+    margin-bottom:10px;
+    font-size:14px;
+    line-height:1.3;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    position:relative;
+    box-shadow: 0 2px 6px -2px rgba(0,0,0,.15);
+}
+#Todo-List li button {
+    height:30px;
+    padding:0 12px;
+    font-size:11px;
+    background:#eef2f5;
+    box-shadow:none;
+    border:1px solid #d2dbe2;
+    color:#333;
+    transition: background .2s, color .2s;
+}
+#Todo-List li button:hover { background:#673ab7; color:#fff; border-color:#673ab7; }
+
+#Todo-List li button + button { margin-left:auto; }
+
+#Todo-List li[style*='line-through'] { opacity:.75; }
+
+@media (max-width:620px){
+    .todo-app { min-height: unset; margin-top:20px; }
+    .title h1 { font-size:24px; }
+}
