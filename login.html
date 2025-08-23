@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login / Signup</title>
+  <link rel="stylesheet" href="login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<body>
+  <div class="auth-wrapper single">
+    <div class="panel" id="signupPanel">
+      <h2>Create Account</h2>
+      <form id="signupForm">
+        <label>
+          <span>Username</span>
+          <input type="text" name="username" required placeholder="john" />
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" name="password" required placeholder="••••••" />
+        </label>
+        <button type="submit" class="btn primary">Sign Up</button>
+        <p class="swap">Already have an account? <a href="#" data-swap="signin">Sign in</a></p>
+      </form>
+    </div>
+
+    <div class="panel hidden" id="signinPanel">
+      <h2>Sign In</h2>
+      <form id="signinForm">
+        <label>
+          <span>Username</span>
+          <input type="text" name="username" required />
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" name="password" required />
+        </label>
+        <button type="submit" class="btn primary">Sign In</button>
+        <p class="swap">No account? <a href="#" data-swap="signup">Create one</a></p>
+      </form>
+    </div>
+  </div>
+
+  <div class="result" id="result"></div>
+
+  <script src="login.js"></script>
+</body>
+</html>
