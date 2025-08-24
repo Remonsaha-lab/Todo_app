@@ -16,7 +16,7 @@ function logger(req, res, next) {
     console.log(req.method + " request came");
     next();
 }
-
+app.use(express.static(path.join(__dirname)));
 // --- HTML Page Routes ---
 
 // This route serves your main landing page (page.html)
@@ -130,6 +130,7 @@ const PORT = process.env.PORT || 3004;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
 
 
 
