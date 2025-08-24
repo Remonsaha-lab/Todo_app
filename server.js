@@ -7,7 +7,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json()); //help to parse any post from body
-app.use(express.static(path.join(__dirname)));
+
 const users = [];
 
 const todos = {};
@@ -130,6 +130,7 @@ const PORT = process.env.PORT || 3004;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
 
 
 
