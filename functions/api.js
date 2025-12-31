@@ -20,7 +20,7 @@ function auth(req, res, next) {
     try {
         let token = req.headers.authorization?.split(" ")[1];
         if (!token) return res.status(401).json({ message: "Token missing" });
-        
+
         const decodedInfo = jwt.verify(token, JWT_SECRET);
         req.username = decodedInfo.username;
         next();
@@ -100,7 +100,10 @@ router.post('/logout', auth, (req, res) => {
     res.json({ message: 'Logged out' });
 });
 
-// Mount the router at the Netlify function path
+// Mount the router at multiple paths to ensure it catches the request 
+// regardless of how the URL is rewritten or passed by serverless-http
 app.use("/.netlify/functions/api", router);
+app.use("/api", router);
+app.use("/", router); // Fallback for local dev or direct invocation
 
 module.exports.handler = serverless(app);
