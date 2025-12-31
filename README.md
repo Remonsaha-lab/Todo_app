@@ -1,25 +1,31 @@
 Full Stack Todo App (Simple In-Memory Demo)
 
-How to run backend:
-1. cd login_page
-2. npm install express cors jsonwebtoken (if not already installed)
-3. node server.js
+## Deployment on Netlify
 
-Endpoints:
-- POST /signup {username, password} -> returns {token}
-- POST /signin {username, password} -> returns {token}
-- GET /todos (auth) -> list todos
-- POST /todos {text} (auth) -> create
-- PUT /todos/:id {completed} (auth) -> toggle complete
-- DELETE /todos/:id (auth) -> delete
+This project has been configured for deployment on Netlify using Serverless Functions.
 
-Auth:
-Send header Authorization: Bearer <token>
+1.  Connect this repository to Netlify.
+2.  Deploy! (Configuration is handled by `netlify.toml`).
 
-Frontend:
-Open login_page/login.html in a static server (recommended) or via live server extension. After login it redirects to todo_page/index.html.
+### Local Development (Serverless)
+To run locally with `netlify-cli`:
+```bash
+npm install -g netlify-cli
+netlify dev
+```
 
-Notes:
-- Data is in-memory; server restart clears users & todos.
+### Legacy Node Server
+To run the old backend (without serverless):
+1.  `node server.js`
+2.  Note: The frontend is now configured to call `/api/...`. You may need to revert frontend changes to point to `/` if you want to use the raw `server.js` or update `server.js` to handle `/api` routes.
+
+## Endpoints (Netlify)
+- POST `/api/signup`
+- POST `/api/signin`
+- GET `/api/todos`
+- ...
+
+## Notes
+- Data is in-memory; server/function restart clears users & todos.
 - JWT secret is hard-coded for simplicity.
-- Not production ready; for learning only.
+

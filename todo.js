@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const fetchTodos = async () => {
         try {
-            const response = await axios.get("/todos", { headers });
+            const response = await axios.get("/api/todos", { headers });
             (response.data || []).forEach(renderTodo);
         } catch (error) {
             console.error("Error fetching todos:", error);
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const text = todoInput.value.trim();
         if (!text) return;
         try {
-            const response = await axios.post("/todos", { text }, { headers });
+            const response = await axios.post("/api/todos", { text }, { headers });
             renderTodo(response.data);
             todoInput.value = "";
         } catch (e) {
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     async function updateTodo(id, completed) {
         try {
-            const response = await axios.put(`/todos/${id}`, { completed }, { headers });
+            const response = await axios.put(`/api/todos/${id}`, { completed }, { headers });
             const li = document.querySelector(`li[data-id="${id}"]`);
             if (li) {
                 li.style.textDecoration = response.data.completed ? "line-through" : "none";
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     async function deleteTodo(id) {
         try {
-            await axios.delete(`/todos/${id}`, { headers });
+            await axios.delete(`/api/todos/${id}`, { headers });
             const li = document.querySelector(`li[data-id="${id}"]`);
             if (li) li.remove();
         } catch (e) {
@@ -90,8 +90,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     window.logout = async function () {
         try {
-            await axios.post('/logout', {}, { headers });
-        } catch (_) {}
+            await axios.post('/api/logout', {}, { headers });
+        } catch (_) { }
         localStorage.removeItem('token');
         localStorage.removeItem('username');
         window.location.href = "/login";

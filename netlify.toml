@@ -1,0 +1,26 @@
+[build]
+  command = "echo 'No build command needed for static files'"
+  publish = "."
+
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/"
+  to = "/page.html"
+  status = 200
+
+[[redirects]]
+  from = "/login"
+  to = "/login.html"
+  status = 200
+
+[[redirects]]
+  from = "/todos-page"
+  to = "/index.html"
+  status = 200

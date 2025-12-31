@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const username = formData.get("username").trim();
             const password = formData.get("password").trim();
             try {
-                const response = await axios.post("/signup", { username, password });
+                const response = await axios.post("/api/signup", { username, password });
                 const { token } = response.data;
                 if (token) {
                     localStorage.setItem("token", token);
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const username = formData.get("username").trim();
             const password = formData.get("password").trim();
             try {
-                const response = await axios.post("/signin", { username, password });
+                const response = await axios.post("/api/signin", { username, password });
                 const { token } = response.data;
                 if (token) {
                     localStorage.setItem("token", token);
